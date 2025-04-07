@@ -27,7 +27,7 @@ const KidsNavbar = () => {
           {/* แทนที่ด้วยสีปกติที่มองเห็นได้ชัดแทนการใช้ gradient + transparent */}
           <div className="relative">
             <h1 className="text-3xl font-bold text-kids-purple">
-              ChildPlusEst
+              ChildPlusest
             </h1>
             {/* เส้นใต้เปลี่ยนเป็นสีที่เห็นชัดเจน */}
             <div className="absolute -bottom-1 left-0 h-1 bg-kids-pink w-0 group-hover:w-full transition-all duration-300"></div>
