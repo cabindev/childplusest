@@ -1,26 +1,375 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #fffbea;
   --foreground: #171717;
+  --kids-yellow: #FFEDA3;
+  --kids-blue: #A3E5FF;
+  --kids-green: #B8FFD0;
+  --kids-purple: #E4C2FF;
+  --kids-pink: #FFCFE6;
+  --kids-orange: #FFD1A3;
+  --kids-peach: #FFE8D6;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-rounded: 'Quicksand', system-ui, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-rounded);
+}
+
+/* สไตล์ปุ่มสำหรับเด็ก */
+.btn-kids {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-kids:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn-kids-yellow {
+  background-color: var(--kids-yellow);
+  color: #4b5563;
+}
+
+.btn-kids-blue {
+  background-color: var(--kids-blue);
+  color: #4b5563;
+}
+
+.btn-kids-green {
+  background-color: var(--kids-green);
+  color: #4b5563;
+}
+
+.btn-kids-orange {
+  background-color: var(--kids-orange);
+  color: #4b5563;
+}
+
+.btn-kids-purple {
+  background-color: var(--kids-purple);
+  color: #4b5563;
+}
+
+.btn-kids-pink {
+  background-color: var(--kids-pink);
+  color: #4b5563;
+}
+
+/* สไตล์การ์ดสำหรับเด็ก */
+.card-kids {
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  overflow: hidden;
+  border: 2px solid #f3f4f6;
+}
+
+.card-kids:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* แอนิเมชัน */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 8s linear infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* เพิ่มแอนิเมชันใหม่สำหรับ particle สำหรับ ActivityCard */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* เพิ่มแอนิเมชันขยายตัวสำหรับเส้นคั่น */
+@keyframes expand {
+  from { width: 30%; }
+  to { width: 100%; }
+}
+
+.animate-expand {
+  animation: expand 1s ease-in-out forwards;
+}
+
+/* สไตล์ที่ใช้กับเว็บเด็ก */
+.bg-kids-yellow {
+  background-color: var(--kids-yellow);
+}
+
+.bg-kids-blue {
+  background-color: var(--kids-blue);
+}
+
+.bg-kids-green {
+  background-color: var(--kids-green);
+}
+
+.bg-kids-purple {
+  background-color: var(--kids-purple);
+}
+
+.bg-kids-pink {
+  background-color: var(--kids-pink);
+}
+
+.bg-kids-orange {
+  background-color: var(--kids-orange);
+}
+
+.bg-kids-peach {
+  background-color: var(--kids-peach);
+}
+
+.text-kids-yellow {
+  color: var(--kids-yellow);
+}
+
+.text-kids-blue {
+  color: var(--kids-blue);
+}
+
+.text-kids-green {
+  color: var(--kids-green);
+}
+
+.text-kids-purple {
+  color: var(--kids-purple);
+}
+
+.text-kids-pink {
+  color: var(--kids-pink);
+}
+
+.text-kids-orange {
+  color: var(--kids-orange);
+}
+
+/* เพิ่มเติมสไตล์สำหรับ shadow ที่มีสี */
+.shadow-kids-yellow {
+  box-shadow: 0 4px 14px -3px rgba(255, 237, 163, 0.5);
+}
+
+.shadow-kids-blue {
+  box-shadow: 0 4px 14px -3px rgba(163, 229, 255, 0.5);
+}
+
+.shadow-kids-green {
+  box-shadow: 0 4px 14px -3px rgba(184, 255, 208, 0.5);
+}
+
+.shadow-kids-purple {
+  box-shadow: 0 4px 14px -3px rgba(228, 194, 255, 0.5);
+}
+
+.shadow-kids-pink {
+  box-shadow: 0 4px 14px -3px rgba(255, 207, 230, 0.5);
+}
+
+.shadow-kids-orange {
+  box-shadow: 0 4px 14px -3px rgba(255, 209, 163, 0.5);
+}
+
+/* สไตล์สำหรับ hover เมื่อวางเมาส์เหนือการ์ด */
+.card-hover-effect {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+/* สไตล์สำหรับซ่อน scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* สไตล์สำหรับ text-decoration ที่มีสีสัน */
+.fancy-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.fancy-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(to right, var(--kids-blue), var(--kids-purple), var(--kids-pink));
+  transition: width 0.3s ease;
+}
+
+.fancy-underline:hover::after {
+  width: 100%;
+}
+
+/* สไตล์สำหรับเอฟเฟกต์ประกายดาว */
+.star-particle {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.particle-container:hover .star-particle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* สไตล์สำหรับปุ่มเริ่มกิจกรรม */
+.activity-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.activity-button:hover {
+  padding-right: 1.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity-button .arrow {
+  display: inline-block;
+  margin-left: 0.25rem;
+  transition: transform 0.3s;
+}
+
+.activity-button:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* กรอบด้านข้างที่มีสีสัน */
+.color-border-left {
+  border-left: 4px solid;
+  transition: border-width 0.3s ease;
+}
+
+.color-border-left:hover {
+  border-width: 8px;
+}
+
+.category-tag {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.card-kids:hover .category-tag {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* สไตล์สำหรับจุดตกแต่ง */
+.decorative-dots {
+  display: flex;
+  gap: 4px;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.decorative-dot {
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+}
+
+/* sub-navigation.tsx */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
 }
