@@ -7,6 +7,7 @@ import CharacterGuides from './components/character-guides';
 import ParentSection from './components/parent-section';
 import WordPressPosts from './content/components/wordpress-posts';
 import FeaturedStories from './stories/components/featured-stories'; 
+import PartnerSection from './components/partner-section';
 
 // สร้าง Section Divider สำหรับเพิ่มความสวยงาม
 const SectionDivider = () => (
@@ -36,6 +37,10 @@ export default function Home() {
       <SectionDivider />
       
       <FeaturedActivities />
+      
+      <SectionDivider />
+      
+      <PartnerSection />
       
       <SectionDivider />
       
