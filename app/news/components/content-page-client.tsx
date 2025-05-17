@@ -235,7 +235,7 @@ export default function ContentPageClient() {
                         {new Date(post.date).toLocaleDateString('th-TH')}
                       </span>
                       <Link
-                        href={`/content/${post.id}`}
+                        href={`/news/${post.id}`}
                         className="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-sm font-medium py-1 px-3 rounded-md transition-colors"
                       >
                         อ่านต่อ

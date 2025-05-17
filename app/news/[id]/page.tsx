@@ -99,92 +99,109 @@ export default async function PostDetail({
     <div className="bg-[var(--background)] min-h-screen py-12 px-4">
       <div className="container mx-auto">
         <div className="mb-6">
-          <Link 
-            href="/" 
-            className="btn-kids btn-kids-yellow"
-          >
+          <Link href="/" className="btn-kids btn-kids-yellow">
             <span className="mr-2">←</span> หน้าหลัก
           </Link>
         </div>
-        
+
         <article className="max-w-3xl mx-auto rounded-3xl shadow-sm card-kids">
           <div className="p-6 md:p-8">
-            <h1 
-              className="text-3xl font-bold mb-4 text-gray-800" 
-              dangerouslySetInnerHTML={{ __html: post.title.rendered }} 
+            <h1
+              className="text-3xl font-bold mb-4 text-gray-800"
+              dangerouslySetInnerHTML={{ __html: post.title.rendered }}
             />
-            
+
             <div className="flex flex-wrap justify-between items-center text-gray-500 mb-6">
               <div className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4 w-4 mr-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
                 </svg>
-                <span>{new Date(post.date).toLocaleDateString('th-TH')}</span>
+                <span>{new Date(post.date).toLocaleDateString("th-TH")}</span>
               </div>
-
             </div>
-            
             {/* ปุ่มแชร์ด้านบนบทความ */}
-            <ShareButtons title={title} />
-            
+            <div className="flex justify-between items-center my-4">
+              <ViewCounter postId={post.id} />
+              <ShareButtons title={title} />
+            </div>
+
             {featuredImage && (
               <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-8">
-                <Image 
-                  src={featuredImage} 
+                <Image
+                  src={featuredImage}
                   alt={title}
-                  fill 
-                  style={{ objectFit: 'cover' }}
+                  fill
+                  style={{ objectFit: "cover" }}
                   priority
                   className="hover:scale-105 transition-transform duration-500"
                 />
               </div>
             )}
-            
-            <div 
+
+            <div
               className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-[var(--kids-blue)] prose-a:font-bold prose-img:rounded-2xl"
-              dangerouslySetInnerHTML={{ __html: post.content.rendered }} 
+              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
             />
-            
+
             {/* ปุ่มแชร์ด้านล่างบทความ */}
             <div className="mt-8 border-t border-gray-100 pt-6">
               <ShareButtons title={title} />
             </div>
           </div>
         </article>
-        
+
         {/* บทความที่เกี่ยวข้อง */}
-        <Suspense fallback={
-          <div className="mt-12 text-center">
-            <div className="animate-pulse">
-              <div className="h-6 w-48 bg-gray-200 rounded-full mx-auto mb-8"></div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[...Array(3)].map((_, i) => (
-                  <div key={i} className="bg-gray-100 rounded-2xl p-4 h-64"></div>
-                ))}
+        <Suspense
+          fallback={
+            <div className="mt-12 text-center">
+              <div className="animate-pulse">
+                <div className="h-6 w-48 bg-gray-200 rounded-full mx-auto mb-8"></div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="bg-gray-100 rounded-2xl p-4 h-64"
+                    ></div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        }>
-         <ViewCounter postId={post.id} />
+          }
+        >
           <RelatedPosts postId={post.id} />
         </Suspense>
-        
+
         {/* เส้นโค้งตกแต่งด้านล่าง */}
         <div className="relative mt-20 overflow-hidden">
           <div className="absolute bottom-0 left-0 w-full h-16 w-screen -ml-[50vw] left-1/2">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute bottom-0 w-full h-full rotate-180">
-              <path 
-                d="M0,40 C100,70 400,0 500,30 C600,60 700,10 900,40 C1000,60 1100,30 1200,50 L1200,120 L0,120 Z" 
+            <svg
+              viewBox="0 0 1200 120"
+              preserveAspectRatio="none"
+              className="absolute bottom-0 w-full h-full rotate-180"
+            >
+              <path
+                d="M0,40 C100,70 400,0 500,30 C600,60 700,10 900,40 C1000,60 1100,30 1200,50 L1200,120 L0,120 Z"
                 className="fill-kids-green opacity-20"
               />
-              <path 
-                d="M0,60 C200,20 300,60 600,30 C900,10 1050,50 1200,30 L1200,120 L0,120 Z" 
+              <path
+                d="M0,60 C200,20 300,60 600,30 C900,10 1050,50 1200,30 L1200,120 L0,120 Z"
                 className="fill-kids-blue opacity-20"
               />
             </svg>
           </div>
         </div>
-        
+
         {/* ลูกบอลสีเล็กๆ ตกแต่ง */}
         <div className="fixed -z-10 top-20 left-10 w-16 h-16 bg-kids-yellow rounded-full opacity-60 animate-float"></div>
         <div className="fixed -z-10 top-40 right-10 w-12 h-12 bg-kids-blue rounded-full opacity-60 animate-float animation-delay-1000"></div>

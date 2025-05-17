@@ -79,41 +79,52 @@ export default function WordPressPosts() {
             ติดตามข่าวสารและกิจกรรมล่าสุดที่น่าสนใจสำหรับเด็กๆ และครอบครัว
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {posts.map((post, index) => (
-            <Link key={post.id} href={`/content/${post.id}`} className="group">
-              <div 
-                className={`rounded-2xl shadow-lg overflow-hidden bg-gradient-to-b ${cardColors[index % cardColors.length]} hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 h-full flex flex-col`}
+            <Link key={post.id} href={`/news/${post.id}`} className="group">
+              <div
+                className={`rounded-2xl shadow-lg overflow-hidden bg-gradient-to-b ${
+                  cardColors[index % cardColors.length]
+                } hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 h-full flex flex-col`}
               >
                 <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-lg font-bold leading-tight line-clamp-3 mb-3 min-h-[4.5rem]">{post.title}</h3>
-                  
+                  <h3 className="text-lg font-bold leading-tight line-clamp-3 mb-3 min-h-[3.6rem] overflow-hidden text-ellipsis">
+                    {post.title}
+                  </h3>
                   {post.featured_image && (
-                    <div className="relative h-48 rounded-xl overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-[1.02]">
-                      <Image 
-                        src={post.featured_image} 
-                        alt={post.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                        className="transition-all duration-500 group-hover:brightness-110"
-                      />
-                      {/* เพิ่มเอฟเฟกต์เมื่อวางเมาส์คล้ายกับส่วนอื่น */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                        <span className="text-white text-sm font-medium">ดูรายละเอียด</span>
+                    <div className="relative w-full rounded-xl overflow-hidden mb-4 transition-transform duration-300 group-hover:scale-[1.02]">
+                      {/* ใช้ CSS ธรรมดาเพื่อกำหนดอัตราส่วน 16:9 */}
+                      <div
+                        className="relative"
+                        style={{ paddingTop: "56.25%" /* 9/16 * 100% */ }}
+                      >
+                        <Image
+                          src={post.featured_image}
+                          alt={post.title}
+                          fill
+                          style={{ objectFit: "cover" }}
+                          className="transition-all duration-500 group-hover:brightness-110"
+                        />
+                        {/* เพิ่มเอฟเฟกต์เมื่อวางเมาส์คล้ายกับส่วนอื่น */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                          <span className="text-white text-sm font-medium">
+                            ดูรายละเอียด
+                          </span>
+                        </div>
                       </div>
                     </div>
                   )}
-                  
+
                   <div className="flex justify-between items-center mt-auto">
                     <span className="text-xs font-medium bg-white/60 rounded-full px-2 py-1">
-                      {new Date(post.date).toLocaleDateString('th-TH')}
+                      {new Date(post.date).toLocaleDateString("th-TH")}
                     </span>
-                    <span 
-                      className="bg-white hover:bg-gray-50 text-gray-800 font-bold py-1.5 px-4 rounded-full text-sm transition-all duration-200 shadow-sm hover:shadow group-hover:px-5 inline-flex items-center"
-                    >
+                    <span className="bg-white hover:bg-gray-50 text-gray-800 font-bold py-1.5 px-4 rounded-full text-sm transition-all duration-200 shadow-sm hover:shadow group-hover:px-5 inline-flex items-center">
                       อ่านต่อ
-                      <span className="inline-block ml-1 transform group-hover:translate-x-1 transition-transform">→</span>
+                      <span className="inline-block ml-1 transform group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
                     </span>
                   </div>
                 </div>
@@ -122,8 +133,8 @@ export default function WordPressPosts() {
           ))}
         </div>
         <div className="text-center mt-10">
-          <Link 
-            href="/content" 
+          <Link
+            href="/news"
             className="inline-block bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
           >
             ดูข่าวสารทั้งหมด

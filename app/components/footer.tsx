@@ -1,7 +1,7 @@
 // components/footer.tsx - คอมโพเนนต์ส่วนท้ายเว็บไซต์
 
 import Link from "next/link";
-import { Heart } from "lucide-react";
+import { Heart, Facebook } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -17,10 +17,24 @@ const Footer = () => {
             <p className="text-gray-600 mb-4">
               แหล่งเรียนรู้ออนไลน์ที่ปลอดภัยและสนุกสนานสำหรับเด็กปฐมวัย การเรียนรู้ผ่านการเล่นคือหัวใจสำคัญของเรา
             </p>
-            <div className="flex items-center space-x-1 text-gray-600">
+            <div className="flex items-center space-x-1 text-gray-600 mb-4">
               <span>สร้างด้วยความรัก</span>
               <Heart className="h-4 w-4 text-red-500 fill-current" />
               <span>เพื่อเด็กๆ ทุกคน</span>
+            </div>
+            
+            {/* เพิ่มไอคอน Facebook */}
+            <div className="flex items-center space-x-2">
+              <a 
+                href="https://www.facebook.com/profile.php?id=100068312467386" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5 text-white" />
+              </a>
+              <span className="text-gray-600 text-sm">ติดตามเราบน Facebook</span>
             </div>
           </div>
           
@@ -38,9 +52,9 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4">สำหรับผู้ปกครอง</h3>
             <ul className="space-y-2">
               {/* <li><Link href="/parents" className="text-gray-600 hover:text-gray-900">คู่มือผู้ปกครอง</Link></li> */}
-              <li><Link href="/parents/faq" className="text-gray-600 hover:text-gray-900">คำถามที่พบบ่อย</Link></li>
+              {/* <li><Link href="/parents/faq" className="text-gray-600 hover:text-gray-900">คำถามที่พบบ่อย</Link></li> */}
               <li><Link href="/about/contact" className="text-gray-600 hover:text-gray-900">ติดต่อเรา</Link></li>
-              <li><Link href="/privacy" className="text-gray-600 hover:text-gray-900">นโยบายความเป็นส่วนตัว</Link></li>
+              {/* <li><Link href="/privacy" className="text-gray-600 hover:text-gray-900">นโยบายความเป็นส่วนตัว</Link></li> */}
             </ul>
           </div>
         </div>

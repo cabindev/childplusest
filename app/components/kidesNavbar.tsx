@@ -1,13 +1,29 @@
 // components/kidesNavbar.tsx 
 "use client"
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Book, Smile, Sun, Music, Heart, PhoneCall, Home } from "lucide-react";
+import { Book, Smile, Sun, Music, Heart, PhoneCall, Home, Users, Newspaper, Info, ChevronDown } from "lucide-react";
 
 const KidsNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
+  const aboutDropdownRef = useRef<HTMLDivElement>(null);
+  
+  // Effect to close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (aboutDropdownRef.current && !aboutDropdownRef.current.contains(event.target as Node)) {
+        setIsAboutOpen(false);
+      }
+    }
+    
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   
   return (
     <nav className="bg-white shadow-md rounded-b-3xl px-4 py-2">
@@ -45,10 +61,17 @@ const KidsNavbar = () => {
             label="หน้าแรก"
             color="bg-kids-yellow"
           />
+                    {/* เพิ่มเมนูข่าว */}
+          <NavItem
+            href="/news"
+            icon={<Newspaper className="h-6 w-6" />}
+            label="ข่าว"
+            color="bg-green-300"
+          />
           <NavItem
             href="/stories"
             icon={<Book className="h-6 w-6" />}
-            label="นิทาน"
+            label="สื่อวิสัยทัศน์"
             color="bg-kids-blue"
           />
           <NavItem
@@ -57,20 +80,50 @@ const KidsNavbar = () => {
             label="เพลง"
             color="bg-kids-green"
           />
-          {/* เพิ่มปุ่ม Vision */}
-          <NavItem
-            href="/about/vision"
-            icon={<Smile className="h-6 w-6" />}
-            label="วิสัยทัศน์"
-            color="bg-kids-orange"
-          />
-          {/* เพิ่มปุ่ม Terms */}
-          <NavItem
-            href="/about/terms"
-            icon={<Heart className="h-6 w-6" />}
-            label="นิยามศัพท์"
-            color="bg-kids-purple"
-          />
+
+          
+          {/* เมนู Dropdown เกี่ยวกับเรา */}
+          <div className="relative" ref={aboutDropdownRef}>
+            <button 
+              onClick={() => setIsAboutOpen(!isAboutOpen)}
+              className="bg-kids-purple flex items-center space-x-1 px-3 py-2 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
+            >
+              <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+              <span className="transform group-hover:scale-110 transition-transform duration-300 z-10">
+                <Info className="h-6 w-6" />
+              </span>
+              <span className="z-10 group-hover:font-bold transition-all duration-300">เกี่ยวกับเรา</span>
+              <ChevronDown className={`h-4 w-4 transition-transform duration-300 z-10 ${isAboutOpen ? 'rotate-180' : ''}`} />
+            </button>
+            
+            {/* Dropdown menu */}
+            {isAboutOpen && (
+              <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-20 animate-fadeIn">
+                <Link 
+                  href="/about/vision" 
+                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-orange/30"
+                >
+                  <Smile className="h-5 w-5" />
+                  <span>วิสัยทัศน์</span>
+                </Link>
+                <Link 
+                  href="/about/team" 
+                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-purple/30"
+                >
+                  <Users className="h-5 w-5" />
+                  <span>คณะทำงาน</span>
+                </Link>
+                <Link 
+                  href="/about/terms" 
+                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-peach/30"
+                >
+                  <Heart className="h-5 w-5" />
+                  <span>นิยามศัพท์</span>
+                </Link>
+              </div>
+            )}
+          </div>
+          
           {/* เมนูติดต่อ */}
           <NavItem
             href="/about/contact"
@@ -109,53 +162,79 @@ const KidsNavbar = () => {
 
       {/* เมนูบนมือถือ */}
       {isOpen && (
-        <div className="md:hidden mt-4 pb-4 grid grid-cols-3 gap-3">
-          {/* เพิ่มปุ่ม Home ในโหมดมือถือ */}
-          <NavItem
-            href="/"
-            icon={<Home className="h-6 w-6" />}
-            label="หน้าแรก"
-            color="bg-kids-yellow"
-            mobile
-          />
-          <NavItem
-            href="/stories"
-            icon={<Book className="h-6 w-6" />}
-            label="นิทาน"
-            color="bg-kids-blue"
-            mobile
-          />
-          <NavItem
-            href="/songs"
-            icon={<Music className="h-6 w-6" />}
-            label="เพลง"
-            color="bg-kids-green"
-            mobile
-          />
-          {/* เพิ่มปุ่ม Vision ในโหมดมือถือ */}
-          <NavItem
-            href="/about/vision"
-            icon={<Smile className="h-6 w-6" />}
-            label="วิสัยทัศน์"
-            color="bg-kids-orange"
-            mobile
-          />
-          {/* เพิ่มปุ่ม Terms ในโหมดมือถือ */}
-          <NavItem
-            href="/about/terms"
-            icon={<Heart className="h-6 w-6" />}
-            label="นิยามศัพท์"
-            color="bg-kids-purple"
-            mobile
-          />
-          {/* เพิ่มเมนูติดต่อในโหมดมือถือ */}
-          <NavItem
-            href="/about/contact"
-            icon={<PhoneCall className="h-6 w-6" />}
-            label="ติดต่อ"
-            color="bg-kids-pink"
-            mobile
-          />
+        <div className="md:hidden mt-4 pb-4">
+          <div className="grid grid-cols-3 gap-3 mb-4">
+            {/* เพิ่มปุ่ม Home ในโหมดมือถือ */}
+            <NavItem
+              href="/"
+              icon={<Home className="h-6 w-6" />}
+              label="หน้าแรก"
+              color="bg-kids-yellow"
+              mobile
+            />
+                      {/* เพิ่มเมนูข่าวในโหมดมือถือ */}
+            <NavItem
+              href="/news"
+              icon={<Newspaper className="h-6 w-6" />}
+              label="ข่าว"
+              color="bg-green-400"
+              mobile
+            />
+            <NavItem
+              href="/stories"
+              icon={<Book className="h-6 w-6" />}
+              label="นิทาน"
+              color="bg-kids-blue"
+              mobile
+            />
+            <NavItem
+              href="/songs"
+              icon={<Music className="h-6 w-6" />}
+              label="เพลง"
+              color="bg-kids-green"
+              mobile
+            />
+  
+            {/* เพิ่มเมนูติดต่อในโหมดมือถือ */}
+            <NavItem
+              href="/about/contact"
+              icon={<PhoneCall className="h-6 w-6" />}
+              label="ติดต่อ"
+              color="bg-kids-pink"
+              mobile
+            />
+          </div>
+          
+          {/* เมนูเกี่ยวกับเราบนมือถือ */}
+          <div className="bg-gray-100 p-3 rounded-xl">
+            <div className="flex items-center justify-center space-x-2 mb-2 text-kids-purple font-bold">
+              <Info className="h-5 w-5" />
+              <h3>เกี่ยวกับเรา</h3>
+            </div>
+            <div className="grid grid-cols-3 gap-2">
+              <NavItem
+                href="/about/vision"
+                icon={<Smile className="h-5 w-5" />}
+                label="วิสัยทัศน์"
+                color="bg-kids-orange"
+                mobile
+              />
+              <NavItem
+                href="/about/team"
+                icon={<Users className="h-5 w-5" />}
+                label="คณะทำงาน"
+                color="bg-kids-purple"
+                mobile
+              />
+              <NavItem
+                href="/about/terms"
+                icon={<Heart className="h-5 w-5" />}
+                label="นิยามศัพท์"
+                color="bg-kids-peach"
+                mobile
+              />
+            </div>
+          </div>
         </div>
       )}
     </nav>

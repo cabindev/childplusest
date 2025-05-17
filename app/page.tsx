@@ -5,7 +5,7 @@ import HeroSection from './components/hero-section';
 import FeaturedActivities from './components/featured-activities';
 import CharacterGuides from './components/character-guides';
 import ParentSection from './components/parent-section';
-import WordPressPosts from './content/components/wordpress-posts';
+import WordPressPosts from './news/components/wordpress-posts';
 import FeaturedStories from './stories/components/featured-stories'; 
 import PartnerSection from './components/partner-section';
 
