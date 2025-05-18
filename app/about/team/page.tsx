@@ -210,11 +210,11 @@ const TeamPage = () => {
               {/* เส้นเชื่อมจากผู้จัดการไปยังส่วนกลาง */}
               <div className="hidden md:block h-12 w-px bg-gray-400 my-2"></div>
               
-              {/* กล่องส่วนกลาง */}
+              {/* กล่องส่วนกลาง - แสดงทั้งหมด */}
               <div className="bg-kids-peach p-4 rounded-xl mt-4 max-w-xs">
                 <h3 className="font-bold text-center mb-2">ส่วนกลาง</h3>
                 <div className="flex flex-wrap justify-center gap-2">
-                  {teamMembers["ส่วนกลาง"].slice(1, 4).map((member, idx) => (
+                  {teamMembers["ส่วนกลาง"].slice(1).map((member, idx) => (
                     <div key={idx} className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white">
                       <Image 
                         src={member.image} 
@@ -249,13 +249,13 @@ const TeamPage = () => {
               {/* เส้นเชื่อมจากประธานไปยังภูมิภาค */}
               <div className="h-12 w-px bg-gray-400 my-2"></div>
               
-              {/* กล่องภูมิภาค */}
+              {/* กล่องภูมิภาค - แสดงทั้งหมด */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {["ภาคเหนือ", "ภาคกลาง", "ภาคใต้", "ภาคอีสาน"].map((region, index) => (
                   <div key={region} className={`${bgColors[index % bgColors.length]} p-3 rounded-xl flex flex-col items-center`}>
                     <h3 className="font-bold text-sm mb-2 text-center">{region}</h3>
                     <div className="flex flex-wrap justify-center gap-1">
-                      {teamMembers[region].slice(0, 2).map((member, idx) => (
+                      {teamMembers[region].map((member, idx) => (
                         <div key={idx} className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white">
                           <Image 
                             src={member.image} 
@@ -263,13 +263,11 @@ const TeamPage = () => {
                             fill 
                             className="object-cover"
                           />
+                          <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <span className="text-white text-[8px] font-bold text-center px-1">{member.name.split(' ')[0]}</span>
+                          </div>
                         </div>
                       ))}
-                      {teamMembers[region].length > 2 && (
-                        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xs font-bold">
-                          +{teamMembers[region].length - 2}
-                        </div>
-                      )}
                     </div>
                   </div>
                 ))}
