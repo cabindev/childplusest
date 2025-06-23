@@ -1,5 +1,8 @@
 // app/page.tsx
-import { Suspense } from 'react';
+'use client';
+
+import { Suspense, useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 import HeroSection from './components/hero-section';
 import FeaturedActivities from './components/featured-activities';
@@ -35,35 +38,103 @@ const YellowSectionDivider = () => (
   </div>
 );
 
+// Component สำหรับแสดงเนื้อหาที่เหลือ
+const RemainingContent = () => {
+  const [showMore, setShowMore] = useState(false);
+
+  return (
+    <>
+      {/* ปุ่มสำหรับแสดง/ซ่อนเนื้อหา */}
+      <div className="flex justify-center py-8 bg-gradient-to-b from-white to-yellow-50">
+        <button
+          onClick={() => setShowMore(!showMore)}
+          className="group flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-yellow-200 hover:border-yellow-300"
+        >
+          <span className="text-lg font-semibold text-gray-700 group-hover:text-yellow-600 transition-colors">
+            {showMore ? 'ซ่อนเนื้อหา' : 'ดูเนื้อหาเพิ่มเติม'}
+          </span>
+          {showMore ? (
+            <ChevronUp className="w-6 h-6 text-yellow-500 group-hover:text-yellow-600 transition-all duration-300 group-hover:-translate-y-1" />
+          ) : (
+            <ChevronDown className="w-6 h-6 text-yellow-500 group-hover:text-yellow-600 transition-all duration-300 group-hover:translate-y-1" />
+          )}
+        </button>
+      </div>
+
+      {/* เนื้อหาที่เหลือ - ใช้ Collapse Animation */}
+      <div 
+        className={`transition-all duration-700 ease-in-out overflow-hidden ${
+          showMore 
+            ? 'max-h-[5000px] opacity-100' 
+            : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="space-y-0">
+          <HeroSection />
+          
+          <YellowSectionDivider />
+          
+          <FeaturedStories />
+          
+          <SectionDivider />
+          
+          <Suspense fallback={
+            <div className="h-64 flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 border-3 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                <span className="text-lg font-medium text-gray-600">กำลังโหลดข่าวสาร...</span>
+              </div>
+            </div>
+          }>
+            <WordPressPosts />
+          </Suspense>
+          
+          <SectionDivider />
+          
+          <FeaturedActivities />
+          
+          <SectionDivider />
+          
+          <PartnerSection />
+          
+          <SectionDivider />
+          
+          <ParentSection />
+        </div>
+      </div>
+
+      {/* แสดงปุ่มปิดเมื่อขยายเนื้อหาแล้ว */}
+      {showMore && (
+        <div className="flex justify-center py-8 bg-gradient-to-t from-white to-yellow-50">
+          <button
+            onClick={() => setShowMore(false)}
+            className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-yellow-100 to-orange-100 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-yellow-300 hover:border-orange-300"
+          >
+            <span className="text-lg font-semibold text-gray-700 group-hover:text-orange-600 transition-colors">
+              ย่อเนื้อหา
+            </span>
+            <ChevronUp className="w-6 h-6 text-orange-500 group-hover:text-orange-600 transition-all duration-300 group-hover:-translate-y-1" />
+          </button>
+        </div>
+      )}
+    </>
+  );
+};
+
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      <BuddhistLentRegistration />
+      {/* แสดง BuddhistLentRegistration ให้เด่นชัด */}
+      <div className="relative">
+        {/* เพิ่ม spotlight effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-yellow-100/50 to-transparent pointer-events-none"></div>
+        <div className="relative z-10">
+          <BuddhistLentRegistration />
+        </div>
+      </div>
       
-      <HeroSection />
-      
-      
-      <YellowSectionDivider />
-      
-      <FeaturedStories />
-      
-      <SectionDivider />
-      
-      <Suspense fallback={<div className="h-64 flex items-center justify-center">กำลังโหลดข่าวสาร...</div>}>
-        <WordPressPosts />
-      </Suspense>
-      
-      <SectionDivider />
-      
-      <FeaturedActivities />
-      
-      <SectionDivider />
-      
-      <PartnerSection />
-      
-      <SectionDivider />
-      
-      <ParentSection />
+      {/* เนื้อหาที่เหลือ - ซ่อน HeroSection และทุกอย่างหลัง BuddhistLentRegistration */}
+      <RemainingContent />
     </main>
   );
 }

@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Quicksand } from 'next/font/google';
 import KidsNavbar from "./components/kidesNavbar";
-
 import Footer from "./components/footer";
 import ScrollToTopButton from "./components/scroll-to-top";
 
@@ -16,27 +15,29 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://childplusest.com'),
   title: {
-    default: 'Child Plus Est - เรียนรู้ เล่น และเติบโตไปด้วยกัน',
-    template: '%s | Child Plus Est'
+    default: 'childplusest - สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง',
+    template: '%s | childplusest'
   },
-  description: 'โลกที่สนุกและเต็มไปด้วยสีสันสำหรับเด็กๆ ที่จะได้เรียนรู้ผ่านเกม นิทาน และกิจกรรมแบบโต้ตอบ',
+  description: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง สำหรับเด็กปฐมวัย ผ่านกิจกรรมเรียนรู้ที่สนุกสนาน เกม นิทาน และการพัฒนาทักษะชีวิตที่จำเป็นสำหรับเด็กวัย 2-6 ปี',
   openGraph: {
     type: 'website',
     locale: 'th_TH',
     url: process.env.NEXT_PUBLIC_APP_URL || 'https://childplusest.com',
-    siteName: 'Child Plus Est',
+    siteName: 'childplusest',
+    title: 'childplusest - สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง',
+    description: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง สำหรับเด็กปฐมวัย ผ่านกิจกรรมเรียนรู้ที่สนุกสนาน เกม นิทาน และการพัฒนาทักษะชีวิตที่จำเป็น',
     images: [{
-      url: '/logo/logo.png', // ใส่รูปภาพ OG default ของคุณที่นี่
+      url: '/logo/logo.png',
       width: 1200,
       height: 630,
-      alt: 'Child Plus Est'
+      alt: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึกและภูมิคุ้มกันปัจจัยเสี่ยง'
     }]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Child Plus Est - เรียนรู้ เล่น และเติบโตไปด้วยกัน',
-    description: 'โลกที่สนุกและเต็มไปด้วยสีสันสำหรับเด็กๆ ที่จะได้เรียนรู้ผ่านเกม นิทาน และกิจกรรมแบบโต้ตอบ',
-    images: ['/logo/logo.png'], // ใส่รูปภาพ Twitter card default ที่นี่
+    title: 'childplusest - สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง',
+    description: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง สำหรับเด็กปฐมวัย ผ่านกิจกรรมเรียนรู้ที่สนุกสนาน',
+    images: ['/logo/logo.png'],
   }
 };
 
@@ -54,6 +55,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <ScrollToTopButton />
 
       </body>
     </html>

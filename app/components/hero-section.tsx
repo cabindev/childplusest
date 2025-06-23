@@ -42,7 +42,7 @@ const HeroSection = () => {
               {/* วงกลมหลัก */}
               <div className="bg-gray-100 rounded-full overflow-hidden h-[300px] w-[300px] mx-auto relative">
                 <Image
-                  src="/img/logo.png" 
+                  src="/img/Childplus.png" 
                   alt="Monkey with banana"
                   fill
                   className="object-cover"

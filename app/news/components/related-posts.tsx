@@ -1,4 +1,4 @@
-// app/content/components/related-posts.tsx
+// app/news/components/related-posts.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -82,7 +82,7 @@ export default function RelatedPosts({ postId }: { postId: number }) {
           const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url;
           
           return (
-            <Link key={post.id} href={`/content/${post.id}`} className="block group">
+            <Link key={post.id} href={`/news/${post.id}`} className="block group">
               <div className={`card-kids h-full overflow-hidden ${index === 0 ? 'animate-wiggle' : 'animate-float'} ${animationClasses[index]}`}>
                 <div className={`p-5 ${colorClasses[index % colorClasses.length]} bg-opacity-30 h-full flex flex-col`}>
                   {featuredImage && (

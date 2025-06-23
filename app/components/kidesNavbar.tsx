@@ -28,11 +28,11 @@ const KidsNavbar = () => {
   return (
     <nav className="bg-white shadow-md rounded-b-3xl px-4 py-2">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* โลโก้ - ปรับปรุงให้ใช้รูปภาพ */}
+        {/* โลโก้ */}
         <Link href="/" className="flex items-center space-x-2 group">
           <div className="relative w-16 h-16 overflow-hidden rounded-full">
             <Image
-              src="/img/logo.png"
+              src="/img/Childplus.png"
               alt="ChildPlusEst Logo"
               fill
               priority
@@ -40,12 +40,10 @@ const KidsNavbar = () => {
             />
           </div>
 
-          {/* แทนที่ด้วยสีปกติที่มองเห็นได้ชัดแทนการใช้ gradient + transparent */}
           <div className="relative">
-            <h1 className="text-3xl font-bold text-kids-purple">
+            <h1 className="text-3xl font-bold text-fuchsia-700">
               ChildPlusest
             </h1>
-            {/* เส้นใต้เปลี่ยนเป็นสีที่เห็นชัดเจน */}
             <div className="absolute -bottom-1 left-0 h-1 bg-kids-pink w-0 group-hover:w-full transition-all duration-300"></div>
           </div>
 
@@ -54,45 +52,40 @@ const KidsNavbar = () => {
 
         {/* เมนูบนเดสก์ท็อป */}
         <div className="hidden md:flex space-x-4">
-          {/* เพิ่มปุ่ม Home */}
           <NavItem
             href="/"
-            icon={<Home className="h-6 w-6" />}
-            label="หน้าแรก"
+            icon={<Home className="h-5 w-5" />}
+            label="Home"
             color="bg-kids-yellow"
           />
-                    {/* เพิ่มเมนูข่าว */}
           <NavItem
             href="/news"
-            icon={<Newspaper className="h-6 w-6" />}
-            label="ข่าว"
+            icon={<Newspaper className="h-5 w-5" />}
+            label="News"
             color="bg-green-300"
           />
           <NavItem
             href="/stories"
-            icon={<Book className="h-6 w-6" />}
-            label="สื่อวิสัยทัศน์"
+            icon={<Book className="h-5 w-5" />}
+            label="Stories"
             color="bg-kids-blue"
           />
           <NavItem
             href="/songs"
-            icon={<Music className="h-6 w-6" />}
-            label="เพลง"
+            icon={<Music className="h-5 w-5" />}
+            label="Songs"
             color="bg-kids-green"
           />
 
-          
           {/* เมนู Dropdown เกี่ยวกับเรา */}
           <div className="relative" ref={aboutDropdownRef}>
             <button 
               onClick={() => setIsAboutOpen(!isAboutOpen)}
-              className="bg-kids-purple flex items-center space-x-1 px-3 py-2 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
+              className="bg-kids-purple flex items-center space-x-1 px-3 py-2 rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-              <span className="transform group-hover:scale-110 transition-transform duration-300 z-10">
-                <Info className="h-6 w-6" />
-              </span>
-              <span className="z-10 group-hover:font-bold transition-all duration-300">เกี่ยวกับเรา</span>
+              <Info className="h-5 w-5 z-10" />
+              <span className="z-10">About</span>
               <ChevronDown className={`h-4 w-4 transition-transform duration-300 z-10 ${isAboutOpen ? 'rotate-180' : ''}`} />
             </button>
             
@@ -101,36 +94,35 @@ const KidsNavbar = () => {
               <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-20 animate-fadeIn">
                 <Link 
                   href="/about/vision" 
-                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-orange/30"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-orange/30"
                 >
                   <Smile className="h-5 w-5" />
-                  <span>วิสัยทัศน์</span>
+                  <span>Vision</span>
                 </Link>
                 <Link 
                   href="/about/team" 
-                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-purple/30"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-purple/30"
                 >
                   <Users className="h-5 w-5" />
-                  <span>คณะทำงาน</span>
+                  <span>Team</span>
                 </Link>
                 <Link 
                   href="/about/terms" 
-                  className="flex items-center space-x-2 px-4 py-2 text-sm text-gray-700 hover:bg-kids-peach/30"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-peach/30"
                 >
                   <Heart className="h-5 w-5" />
-                  <span>นิยามศัพท์</span>
+                  <span>Terms</span>
+                </Link>
+                <Link 
+                  href="/about/contact" 
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-pink/30"
+                >
+                  <PhoneCall className="h-5 w-5" />
+                  <span>Contact</span>
                 </Link>
               </div>
             )}
           </div>
-          
-          {/* เมนูติดต่อ */}
-          <NavItem
-            href="/about/contact"
-            icon={<PhoneCall className="h-6 w-6" />}
-            label="ติดต่อ"
-            color="bg-kids-pink"
-          />
         </div>
 
         {/* ปุ่มเมนูบนมือถือ */}
@@ -162,75 +154,71 @@ const KidsNavbar = () => {
 
       {/* เมนูบนมือถือ */}
       {isOpen && (
-        <div className="md:hidden mt-4 pb-4">
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            {/* เพิ่มปุ่ม Home ในโหมดมือถือ */}
+        <div className="md:hidden mt-3 pb-3">
+          <div className="grid grid-cols-4 gap-2 mb-3">
             <NavItem
               href="/"
-              icon={<Home className="h-6 w-6" />}
-              label="หน้าแรก"
+              icon={<Home className="h-4 w-4" />}
+              label="Home"
               color="bg-kids-yellow"
               mobile
             />
-                      {/* เพิ่มเมนูข่าวในโหมดมือถือ */}
             <NavItem
               href="/news"
-              icon={<Newspaper className="h-6 w-6" />}
-              label="ข่าว"
+              icon={<Newspaper className="h-4 w-4" />}
+              label="News"
               color="bg-green-400"
               mobile
             />
             <NavItem
               href="/stories"
-              icon={<Book className="h-6 w-6" />}
-              label="นิทาน"
+              icon={<Book className="h-4 w-4" />}
+              label="Stories"
               color="bg-kids-blue"
               mobile
             />
             <NavItem
               href="/songs"
-              icon={<Music className="h-6 w-6" />}
-              label="เพลง"
+              icon={<Music className="h-4 w-4" />}
+              label="Songs"
               color="bg-kids-green"
-              mobile
-            />
-  
-            {/* เพิ่มเมนูติดต่อในโหมดมือถือ */}
-            <NavItem
-              href="/about/contact"
-              icon={<PhoneCall className="h-6 w-6" />}
-              label="ติดต่อ"
-              color="bg-kids-pink"
               mobile
             />
           </div>
           
           {/* เมนูเกี่ยวกับเราบนมือถือ */}
-          <div className="bg-gray-100 p-3 rounded-xl">
-            <div className="flex items-center justify-center space-x-2 mb-2 text-kids-purple font-bold">
-              <Info className="h-5 w-5" />
-              <h3>เกี่ยวกับเรา</h3>
+          <div className="bg-gray-100 p-2 rounded-xl">
+            <div className="flex items-center justify-center space-x-1 mb-2 text-kids-purple font-light text-xs">
+              <Info className="h-4 w-4" />
+              <h3>About</h3>
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 gap-2">
               <NavItem
                 href="/about/vision"
-                icon={<Smile className="h-5 w-5" />}
-                label="วิสัยทัศน์"
+                icon={<Smile className="h-3 w-3" />}
+                label="Vision"
                 color="bg-kids-orange"
                 mobile
               />
               <NavItem
                 href="/about/team"
-                icon={<Users className="h-5 w-5" />}
-                label="คณะทำงาน"
+                icon={<Users className="h-3 w-3" />}
+                label="Team"
                 color="bg-kids-purple"
                 mobile
               />
               <NavItem
                 href="/about/terms"
-                icon={<Heart className="h-5 w-5" />}
-                label="นิยามศัพท์"
+                icon={<Heart className="h-3 w-3" />}
+                label="Terms"
                 color="bg-kids-peach"
+                mobile
+              />
+              <NavItem
+                href="/about/contact"
+                icon={<PhoneCall className="h-3 w-3" />}
+                label="Contact"
+                color="bg-kids-pink"
                 mobile
               />
             </div>
@@ -254,20 +242,16 @@ const NavItem = ({ href, icon, label, color, mobile = false }: NavItemProps) => 
     <Link
       href={href}
       className={`${color} ${
-        mobile ? "flex flex-col items-center p-3" : "flex items-center space-x-2 px-3 py-2"
-      } rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group`}
+        mobile ? "flex flex-col items-center p-1.5 text-xs" : "flex items-center space-x-2 px-3 py-2"
+      } rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group`}
     >
       <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-      <span className={`${mobile ? "mb-1" : ""} transform group-hover:scale-110 transition-transform duration-300 z-10`}>
+      <span className={`${mobile ? "mb-0.5" : ""} z-10`}>
         {icon}
       </span>
-      <span className="z-10 group-hover:font-bold transition-all duration-300">
+      <span className="z-10">
         {label}
       </span>
-      
-      {/* เอฟเฟกต์ลูกบอลเล็กๆ เมื่อ hover */}
-      <span className="absolute -top-2 -right-2 w-4 h-4 rounded-full bg-white opacity-0 group-hover:opacity-50 group-hover:scale-150 transition-all duration-500"></span>
-      <span className="absolute -bottom-2 -left-2 w-4 h-4 rounded-full bg-white opacity-0 group-hover:opacity-50 group-hover:scale-150 transition-all duration-500 delay-100"></span>
     </Link>
   );
 };
