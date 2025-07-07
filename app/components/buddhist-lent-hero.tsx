@@ -66,8 +66,8 @@ const BuddhistLentHero = () => {
               เพื่อสุขภาพกายและใจที่แข็งแรงในช่วงเข้าพรรษา
             </p>
 
-            {/* CTA Button */}
-            <div className="flex justify-center lg:justify-start pt-2">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start pt-2">
               <Link
                 href="https://healthy-sobriety.sdnthailand.com/Buddhist-Lent"
                 target="_blank"
@@ -75,6 +75,17 @@ const BuddhistLentHero = () => {
                 className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-700/90 hover:to-amber-700/90 text-white font-semibold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm border border-yellow-400/30 transform hover:scale-105 transition-all duration-300"
               >
                 <span>เรียนรู้เพิ่มเติม</span>
+                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              
+              <Link
+                href="https://noalcohol.ddc.moph.go.th/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full border-2 border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                <Heart className="w-4 h-4" />
+                <span>เข้าร่วมโครงการ</span>
                 <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
