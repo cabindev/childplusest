@@ -11,8 +11,7 @@ import ParentSection from './components/parent-section';
 import WordPressPosts from './news/components/wordpress-posts';
 import FeaturedStories from './stories/components/featured-stories'; 
 import PartnerSection from './components/partner-section';
-import RegistrationSection from './components/registration-section';
-import BuddhistLentRegistration from './components/registration-section';
+import BuddhistLentHero from './components/buddhist-lent-hero';
 
 // สร้าง Section Divider สำหรับเพิ่มความสวยงาม
 const SectionDivider = () => (
@@ -45,7 +44,7 @@ const RemainingContent = () => {
   return (
     <>
       {/* ปุ่มสำหรับแสดง/ซ่อนเนื้อหา */}
-      <div className="flex justify-center py-8 bg-gradient-to-b from-white to-yellow-50">
+      <div id="content-section" className="flex justify-center py-8 bg-gradient-to-b from-white to-yellow-50">
         <button
           onClick={() => setShowMore(!showMore)}
           className="group flex items-center gap-3 px-8 py-4 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-yellow-200 hover:border-yellow-300"
@@ -124,16 +123,16 @@ const RemainingContent = () => {
 export default function Home() {
   return (
     <main className="overflow-hidden">
-      {/* แสดง BuddhistLentRegistration ให้เด่นชัด */}
+      {/* แสดง BuddhistLentHero ให้เด่นชัด */}
       <div className="relative">
         {/* เพิ่ม spotlight effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-100/50 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-100/30 to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <BuddhistLentRegistration />
+          <BuddhistLentHero />
         </div>
       </div>
       
-      {/* เนื้อหาที่เหลือ - ซ่อน HeroSection และทุกอย่างหลัง BuddhistLentRegistration */}
+      {/* เนื้อหาที่เหลือ - ซ่อน HeroSection และทุกอย่างหลัง BuddhistLentHero */}
       <RemainingContent />
     </main>
   );
