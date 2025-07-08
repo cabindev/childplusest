@@ -1,15 +1,18 @@
-// components/kidesNavbar.tsx 
+// app/components/kidesNavbar.tsx - เพิ่ม Analytics
 "use client"
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Book, Smile, Sun, Music, Heart, PhoneCall, Home, Users, Newspaper, Info, ChevronDown } from "lucide-react";
+import { event } from "../lib/google-analytics";
 
 const KidsNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const aboutDropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   
   // Effect to close dropdown when clicking outside
   useEffect(() => {
@@ -24,12 +27,50 @@ const KidsNavbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  // Track navigation clicks
+  const handleNavClick = (destination: string, label: string) => {
+    event({
+      action: 'navigation_click',
+      category: 'navigation',
+      label: `${label}_from_${pathname}`
+    });
+  };
+
+  // Track mobile menu toggle
+  const handleMobileMenuToggle = () => {
+    setIsOpen(!isOpen);
+    event({
+      action: 'mobile_menu_toggle',
+      category: 'navigation',
+      label: isOpen ? 'close' : 'open'
+    });
+  };
+
+  // Track about dropdown
+  const handleAboutDropdown = () => {
+    setIsAboutOpen(!isAboutOpen);
+    event({
+      action: 'about_dropdown_toggle',
+      category: 'navigation',
+      label: isAboutOpen ? 'close' : 'open'
+    });
+  };
+
+  // Track logo click
+  const handleLogoClick = () => {
+    event({
+      action: 'logo_click',
+      category: 'navigation',
+      label: `home_from_${pathname}`
+    });
+  };
   
   return (
     <nav className="bg-white shadow-md rounded-b-3xl px-4 py-2">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* โลโก้ */}
-        <Link href="/" className="flex items-center space-x-2 group">
+        <Link href="/" onClick={handleLogoClick} className="flex items-center space-x-2 group">
           <div className="relative w-16 h-16 overflow-hidden rounded-full">
             <Image
               src="/img/Childplus.png"
@@ -57,30 +98,38 @@ const KidsNavbar = () => {
             icon={<Home className="h-5 w-5" />}
             label="Home"
             color="bg-kids-yellow"
+            onAnalyticsClick={() => handleNavClick("/", "Home")}
+            isActive={pathname === "/"}
           />
           <NavItem
             href="/news"
             icon={<Newspaper className="h-5 w-5" />}
             label="News"
             color="bg-green-300"
+            onAnalyticsClick={() => handleNavClick("/news", "News")}
+            isActive={pathname.startsWith("/news")}
           />
           <NavItem
             href="/stories"
             icon={<Book className="h-5 w-5" />}
             label="Stories"
             color="bg-kids-blue"
+            onAnalyticsClick={() => handleNavClick("/stories", "Stories")}
+            isActive={pathname.startsWith("/stories")}
           />
           <NavItem
             href="/songs"
             icon={<Music className="h-5 w-5" />}
             label="Songs"
             color="bg-kids-green"
+            onAnalyticsClick={() => handleNavClick("/songs", "Songs")}
+            isActive={pathname.startsWith("/songs")}
           />
 
           {/* เมนู Dropdown เกี่ยวกับเรา */}
           <div className="relative" ref={aboutDropdownRef}>
             <button 
-              onClick={() => setIsAboutOpen(!isAboutOpen)}
+              onClick={handleAboutDropdown}
               className="bg-kids-purple flex items-center space-x-1 px-3 py-2 rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
@@ -94,6 +143,7 @@ const KidsNavbar = () => {
               <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-20 animate-fadeIn">
                 <Link 
                   href="/about/vision" 
+                  onClick={() => handleNavClick("/about/vision", "Vision")}
                   className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-orange/30"
                 >
                   <Smile className="h-5 w-5" />
@@ -101,6 +151,7 @@ const KidsNavbar = () => {
                 </Link>
                 <Link 
                   href="/about/team" 
+                  onClick={() => handleNavClick("/about/team", "Team")}
                   className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-purple/30"
                 >
                   <Users className="h-5 w-5" />
@@ -108,6 +159,7 @@ const KidsNavbar = () => {
                 </Link>
                 <Link 
                   href="/about/terms" 
+                  onClick={() => handleNavClick("/about/terms", "Terms")}
                   className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-peach/30"
                 >
                   <Heart className="h-5 w-5" />
@@ -115,6 +167,7 @@ const KidsNavbar = () => {
                 </Link>
                 <Link 
                   href="/about/contact" 
+                  onClick={() => handleNavClick("/about/contact", "Contact")}
                   className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-kids-pink/30"
                 >
                   <PhoneCall className="h-5 w-5" />
@@ -128,7 +181,7 @@ const KidsNavbar = () => {
         {/* ปุ่มเมนูบนมือถือ */}
         <div className="md:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleMobileMenuToggle}
             className="p-2 rounded-full bg-kids-purple hover:bg-purple-200 transition-colors relative overflow-hidden group"
             aria-label={isOpen ? "ปิดเมนู" : "เปิดเมนู"}
           >
@@ -162,6 +215,7 @@ const KidsNavbar = () => {
               label="Home"
               color="bg-kids-yellow"
               mobile
+              onAnalyticsClick={() => handleNavClick("/", "Home_Mobile")}
             />
             <NavItem
               href="/news"
@@ -169,6 +223,7 @@ const KidsNavbar = () => {
               label="News"
               color="bg-green-400"
               mobile
+              onAnalyticsClick={() => handleNavClick("/news", "News_Mobile")}
             />
             <NavItem
               href="/stories"
@@ -176,6 +231,7 @@ const KidsNavbar = () => {
               label="Stories"
               color="bg-kids-blue"
               mobile
+              onAnalyticsClick={() => handleNavClick("/stories", "Stories_Mobile")}
             />
             <NavItem
               href="/songs"
@@ -183,6 +239,7 @@ const KidsNavbar = () => {
               label="Songs"
               color="bg-kids-green"
               mobile
+              onAnalyticsClick={() => handleNavClick("/songs", "Songs_Mobile")}
             />
           </div>
           
@@ -199,6 +256,7 @@ const KidsNavbar = () => {
                 label="Vision"
                 color="bg-kids-orange"
                 mobile
+                onAnalyticsClick={() => handleNavClick("/about/vision", "Vision_Mobile")}
               />
               <NavItem
                 href="/about/team"
@@ -206,6 +264,7 @@ const KidsNavbar = () => {
                 label="Team"
                 color="bg-kids-purple"
                 mobile
+                onAnalyticsClick={() => handleNavClick("/about/team", "Team_Mobile")}
               />
               <NavItem
                 href="/about/terms"
@@ -213,6 +272,7 @@ const KidsNavbar = () => {
                 label="Terms"
                 color="bg-kids-peach"
                 mobile
+                onAnalyticsClick={() => handleNavClick("/about/terms", "Terms_Mobile")}
               />
               <NavItem
                 href="/about/contact"
@@ -220,6 +280,7 @@ const KidsNavbar = () => {
                 label="Contact"
                 color="bg-kids-pink"
                 mobile
+                onAnalyticsClick={() => handleNavClick("/about/contact", "Contact_Mobile")}
               />
             </div>
           </div>
@@ -235,13 +296,16 @@ type NavItemProps = {
   label: string;
   color: string;
   mobile?: boolean;
+  onAnalyticsClick?: () => void;
+  isActive?: boolean;
 };
 
-const NavItem = ({ href, icon, label, color, mobile = false }: NavItemProps) => {
+const NavItem = ({ href, icon, label, color, mobile = false, onAnalyticsClick, isActive = false }: NavItemProps) => {
   return (
     <Link
       href={href}
-      className={`${color} ${
+      onClick={onAnalyticsClick}
+      className={`${color} ${isActive ? 'ring-2 ring-white shadow-lg' : ''} ${
         mobile ? "flex flex-col items-center p-1.5 text-xs" : "flex items-center space-x-2 px-3 py-2"
       } rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group`}
     >
