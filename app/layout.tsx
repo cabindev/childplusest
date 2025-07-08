@@ -1,10 +1,10 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import { Quicksand } from 'next/font/google';
 import KidsNavbar from "./components/kidesNavbar";
 import Footer from "./components/footer";
 import ScrollToTopButton from "./components/scroll-to-top";
+import GoogleAnalytics from "./components/google-analytics";
 
 const quicksand = Quicksand({
   subsets: ['latin'],
@@ -49,14 +49,13 @@ export default function RootLayout({
   return (
     <html lang="th" className={`${quicksand.variable} scroll-smooth`}>
       <body className="font-quicksand">
+        <GoogleAnalytics />
         <KidsNavbar />
-
         <main className="min-h-screen">
           {children}
         </main>
         <Footer />
         <ScrollToTopButton />
-
       </body>
     </html>
   );
