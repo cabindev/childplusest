@@ -32,62 +32,78 @@ const BuddhistLentHero = () => {
           
           {/* Left Content */}
           <div className="space-y-6 lg:space-y-8 text-center lg:text-left order-2 lg:order-1">
-            
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-yellow-100/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-sm border border-yellow-200">
-              <Flower2 className="w-4 h-4 text-amber-600" />
-              <span className="text-amber-800 font-medium text-sm">โครงการส่งเสริมสุขภาพ</span>
-            </div>
 
             {/* Main Title */}
             <div className="space-y-4">
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight tracking-tight">
+              <h1 className="text-2xl text-center sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white leading-tight tracking-tight">
                 <span className="block">โครงการฤดูกาลฝึกสติ</span>
-                <span className="block bg-gradient-to-r from-yellow-300 via-amber-200 to-orange-300 bg-clip-text text-transparent">
+                <span className="block text-center bg-gradient-to-r from-yellow-300 via-amber-200 to-orange-300 bg-clip-text text-transparent">
                   และรณรงค์งดเหล้าเข้าพรรษา
                 </span>
               </h1>
               
               {/* Quote Badge */}
-              <div className="inline-block bg-white/10 backdrop-blur-sm rounded-xl p-3 lg:p-4 border border-yellow-300/20 shadow-lg">
-                <div className="flex items-center gap-2 mb-1">
+                <div className="inline-flex flex-col items-center gap-2 mb-1 text-center w-full">
+                <div className="flex items-center justify-center gap-2">
                   <Heart className="w-4 h-4 text-yellow-300" />
                   <span className="text-yellow-200 font-medium text-xs lg:text-sm">แนวคิด</span>
                 </div>
-                <p className="text-lg lg:text-xl xl:text-2xl font-bold text-white">
+                <span className="text-lg lg:text-xl xl:text-2xl font-bold text-white">
                   "มีสติ มีสุข ทุกโอกาส"
-                </p>
-              </div>
+                </span>
+                </div>
             </div>
 
-            {/* Description */}
-            <p className="text-base lg:text-lg text-yellow-100/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              ร่วมสร้างสุขภาวะที่ดีผ่านการฝึกสติและการใช้ชีวิตอย่างมีสติสัมปชัญญะ 
-              เพื่อสุขภาพกายและใจที่แข็งแรงในช่วงเข้าพรรษา
-            </p>
+
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 lg:gap-4 justify-center lg:justify-start pt-2">
-              <Link
-                href="https://healthy-sobriety.sdnthailand.com/Buddhist-Lent"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-700/90 hover:to-amber-700/90 text-white font-semibold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm border border-yellow-400/30 transform hover:scale-105 transition-all duration-300"
-              >
-                <span>เรียนรู้เพิ่มเติม</span>
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              
-              <Link
-                href="https://noalcohol.ddc.moph.go.th/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-3.5 rounded-full border-2 border-white/30 hover:border-white/50 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              >
-                <Heart className="w-4 h-4" />
-                <span>เข้าร่วมโครงการ</span>
-                <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
+            <div className="flex flex-col gap-4 justify-center lg:justify-start pt-2">
+              {/* Primary Button: เข้าร่วมโครงการ อยู่บนสุด */}
+              <div className="flex justify-center lg:justify-start">
+                <Link
+                  href="https://noalcohol.ddc.moph.go.th/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 bg-gradient-to-r from-yellow-600/80 to-amber-600/80 hover:from-yellow-700/90 hover:to-amber-700/90 text-white font-semibold text-base lg:text-lg px-6 lg:px-8 py-3 lg:py-4 rounded-full shadow-lg hover:shadow-xl backdrop-blur-sm border border-yellow-400/30 transform hover:scale-105 transition-all duration-300"
+                >
+             
+                  <span>เข้าร่วมโครงการ</span>
+                  <ExternalLink className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+
+              {/* Secondary Buttons: 3 ปุ่มขนาดเล็กสีเดียวกัน ระดับเดียวกัน */}
+              <div className="flex flex-col sm:flex-row gap-2 lg:gap-3">
+                <Link
+                  href="https://healthy-sobriety.sdnthailand.com/Buddhist-Lent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 bg-amber-600/60 backdrop-blur-sm hover:bg-amber-700/70 text-white font-medium text-xs lg:text-sm px-3 lg:px-4 py-2 lg:py-2.5 rounded-full border border-amber-400/40 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  <span>เรียนรู้เพิ่มเติม</span>
+            
+                </Link>
+                
+                <Link
+                  href="https://healthy-sobriety.sdnthailand.com/organization/create"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 bg-amber-600/60 backdrop-blur-sm hover:bg-amber-700/70 text-white font-medium text-xs lg:text-sm px-3 lg:px-4 py-2 lg:py-2.5 rounded-full border border-amber-400/40 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  <span>รายงานผลงดเหล้าเข้าพรรษา</span>
+               
+                </Link>
+                
+                <Link
+                  href="https://sdn-workspaces.sdnthailand.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-2 bg-amber-600/60 backdrop-blur-sm hover:bg-amber-700/70 text-white font-medium text-xs lg:text-sm px-3 lg:px-4 py-2 lg:py-2.5 rounded-full border border-amber-400/40 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                >
+                  <span>สื่อรณรงค์งดเหล้าเข้าพรรษา</span>
+                
+                </Link>
+              </div>
             </div>
 
             {/* Additional Info */}
@@ -105,7 +121,7 @@ const BuddhistLentHero = () => {
 
           </div>
 
-          {/* Right Content - Image */}
+          {/* Right Content - Image with Overlaid QR Code */}
           <div className="order-1 lg:order-2 flex justify-center items-center">
             <div className="relative w-full max-w-lg">
               
@@ -132,6 +148,29 @@ const BuddhistLentHero = () => {
                   {/* Image Badge */}
                   <div className="absolute top-4 left-4 bg-yellow-400 text-amber-900 px-3 py-1.5 rounded-full text-sm font-semibold shadow-lg">
                     2568
+                  </div>
+
+                  {/* QR Code Section - Overlaid on bottom right */}
+                  <div className="absolute bottom-3 right-6 w-28 lg:w-32">
+                    <div className="rounded-xl p-3">
+                      
+                      {/* QR Code */}
+                      <div className="relative bg-white rounded-lg p-2 shadow-inner border border-gray-100">
+                        <div className="aspect-square relative">
+                          <Image
+                            src="/img/QR-Code.jpg"
+                            alt="QR Code สำหรับดาวน์โหลดเกียรติบัตร"
+                            fill
+                            className="object-contain rounded-md"
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* QR Code Info */}
+                      <div className="mt-2 text-center">
+                        <h3 className="text-gray-800 font-semibold text-xs mb-1">ดาวน์โหลดเกียรติบัตร</h3>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
