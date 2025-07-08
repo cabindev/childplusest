@@ -1,8 +1,9 @@
+// 4. app/page.tsx (แก้ไขให้ใช้ useAnalytics แบบง่าย)
 'use client';
 
 import { Suspense, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useAnalytics } from './hooks/use-analytics'; // เพิ่มบรรทัดนี้
+import { useAnalytics } from './hooks/use-analytics';
 
 import HeroSection from './components/hero-section';
 import FeaturedActivities from './components/featured-activities';
@@ -121,7 +122,7 @@ const RemainingContent = () => {
 };
 
 export default function Home() {
-  useAnalytics(); // เพิ่มบรรทัดนี้
+  useAnalytics(); // ใช้ hook แบบง่าย
 
   return (
     <main className="overflow-hidden">

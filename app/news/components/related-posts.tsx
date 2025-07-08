@@ -16,7 +16,7 @@ interface RelatedPost {
   };
 }
 
-export default function RelatedPosts({ postId }: { postId: number }) {
+export default function RelatedPosts({ postId }: { postId: string }) {
   const [posts, setPosts] = useState<RelatedPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -53,12 +53,12 @@ export default function RelatedPosts({ postId }: { postId: number }) {
       <div className="relative">
         {/* เส้นโค้งตกแต่ง */}
         <div className="absolute -top-10 left-0 right-0 h-16 w-screen -ml-[50vw] left-1/2">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full">
+          <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="absolute top-0 w-full h-full">
             <path 
-            d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
-            className="fill-kids-yellow opacity-30"
-            ></path>
-        </svg>
+              d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" 
+              className="fill-kids-yellow opacity-30"
+            />
+          </svg>
         </div>
       </div>
 
@@ -100,7 +100,7 @@ export default function RelatedPosts({ postId }: { postId: number }) {
                   <h3 
                     className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-gray-700"
                     dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-                  ></h3>
+                  />
                   
                   <div className="mt-auto flex justify-between items-center">
                     <span className="text-xs font-medium bg-white/70 rounded-full px-2 py-1">

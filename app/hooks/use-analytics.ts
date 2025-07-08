@@ -1,18 +1,17 @@
-// 4. app/hooks/use-analytics.ts (แก้ไขแล้ว)
+// 1. แก้ไข app/hooks/use-analytics.ts (ใช้แค่ pathname)
 'use client';
 
 import { useEffect } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { pageview } from '../lib/google-analytics';
 
 export function useAnalytics() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (pathname) {
-      const url = searchParams ? pathname + searchParams.toString() : pathname;
-      pageview(url);
+      // ใช้แค่ pathname เพื่อหลีกเลี่ยงปัญหา Promise
+      pageview(pathname);
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 }

@@ -1,4 +1,4 @@
-// 3. app/components/google-analytics.tsx (แก้ไขแล้ว)
+// 3. app/components/google-analytics.tsx (ไม่เปลี่ยนแปลง)
 'use client';
 
 import Script from 'next/script';

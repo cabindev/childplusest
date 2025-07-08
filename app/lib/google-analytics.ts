@@ -1,4 +1,4 @@
-// 2. app/lib/google-analytics.ts (แก้ไขแล้ว)
+// 2. app/lib/google-analytics.ts (ปรับปรุงให้รองรับ Next.js 15)
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-LR831E9CMW';
 
 // Log the pageview with their URL
@@ -23,5 +23,13 @@ export const event = (eventData: {
       event_label: eventData.label,
       value: eventData.value,
     });
+  }
+};
+
+// Helper function for manual page tracking
+export const trackPageView = (url?: string) => {
+  if (typeof window !== 'undefined') {
+    const currentUrl = url || window.location.pathname + window.location.search;
+    pageview(currentUrl);
   }
 };

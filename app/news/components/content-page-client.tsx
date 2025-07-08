@@ -1,4 +1,4 @@
-// app/content/components/content-page-client.tsx
+//app/news/components/content-page-client.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
 import SkeletonLoader from './skeleton-loader';
+
 interface Post {
   id: number;
   title: {
@@ -58,7 +59,7 @@ export default function ContentPageClient() {
 
   const handlePageChange = (page: number) => {
     if (page < 1 || page > totalPages) return;
-    router.push(`/content?page=${page}`);
+    router.push(`/news?page=${page}`);
   };
 
   // สร้าง Pagination UI
@@ -235,7 +236,7 @@ export default function ContentPageClient() {
                         {new Date(post.date).toLocaleDateString('th-TH')}
                       </span>
                       <Link
-                        href={`/news/${post.id}`}
+                        href={`/content/${post.id}`}
                         className="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-sm font-medium py-1 px-3 rounded-md transition-colors"
                       >
                         อ่านต่อ
