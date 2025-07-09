@@ -14,11 +14,11 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://childplusest.com'),
-  title: {
-    default: 'childplusest - สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง',
-    template: '%s | childplusest'
-  },
-  description: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันปัจจัยเสี่ยง สำหรับเด็กปฐมวัย ผ่านกิจกรรมเรียนรู้ที่สนุกสนาน เกม นิทาน และการพัฒนาทักษะชีวิตที่จำเป็นสำหรับเด็กวัย 2-6 ปี',
+title: {
+  default: 'ChildPlus ChildPlusEst - เด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันลดปัจจัยเสี่ยง',
+  template: '%s | ChildPlus ChildPlusEst'
+},
+  description: 'ปลูกพลังบวกเด็กปฐมวัย สร้างจิตสำนึก ภูมิคุ้มกันลดปัจจัยเสี่ยง สำหรับเด็กปฐมวัย ผ่านกิจกรรมเรียนรู้ที่สนุกสนาน เกม นิทาน และการพัฒนาทักษะชีวิตที่จำเป็นสำหรับเด็กวัย 2-6 ปี',
   openGraph: {
     type: 'website',
     locale: 'th_TH',
