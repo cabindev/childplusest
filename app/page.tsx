@@ -12,7 +12,7 @@ import ParentSection from './components/parent-section';
 import WordPressPosts from './news/components/wordpress-posts';
 import FeaturedStories from './stories/components/featured-stories'; 
 import PartnerSection from './components/partner-section';
-import BuddhistLentHero from './components/buddhist-lent-hero';
+import QueenSirikit from './components/queen-sirikit';
 
 // สร้าง Section Divider สำหรับเพิ่มความสวยงาม
 const SectionDivider = () => (
@@ -126,16 +126,16 @@ export default function Home() {
 
   return (
     <main className="overflow-hidden">
-      {/* แสดง BuddhistLentHero ให้เด่นชัด */}
+      {/* แสดง QueenSirikit ให้เด่นชัด */}
       <div className="relative">
         {/* เพิ่ม spotlight effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-100/30 to-transparent pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-100/30 to-transparent pointer-events-none"></div>
         <div className="relative z-10">
-          <BuddhistLentHero />
+          <QueenSirikit />
         </div>
       </div>
       
-      {/* เนื้อหาที่เหลือ - ซ่อน HeroSection และทุกอย่างหลัง BuddhistLentHero */}
+      {/* เนื้อหาที่เหลือ - ซ่อน HeroSection และทุกอย่างหลัง QueenSirikit */}
       <RemainingContent />
     </main>
   );
