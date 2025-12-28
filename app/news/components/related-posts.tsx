@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import DOMPurify from 'isomorphic-dompurify';
+import { sanitizeHtml } from '../../lib/sanitize';
 
 interface RelatedPost {
   id: number;
@@ -100,7 +100,7 @@ export default function RelatedPosts({ postId }: { postId: string }) {
                   
                   <h3
                     className="text-lg font-bold mb-2 line-clamp-2 group-hover:text-gray-700"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.title.rendered) }}
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(post.title.rendered) }}
                   />
                   
                   <div className="mt-auto flex justify-between items-center">
