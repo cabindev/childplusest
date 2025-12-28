@@ -1,4 +1,4 @@
-// 4. app/page.tsx (แก้ไขให้ใช้ useAnalytics แบบง่าย)
+// 4. app/page.tsx 
 'use client';
 
 import { Suspense, useState } from 'react';

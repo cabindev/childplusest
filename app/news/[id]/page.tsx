@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
+import DOMPurify from 'isomorphic-dompurify';
 import RelatedPosts from '../components/related-posts';
 import ShareButtons from '../components/share-buttons';
 import ViewCounter from '../components/view-counter';
@@ -262,7 +263,7 @@ export default async function PostDetail({
             <div className="p-6 md:p-8">
               <h1
                 className="text-3xl font-bold mb-4 text-gray-800"
-                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.title.rendered) }}
               />
 
               <div className="flex flex-wrap justify-between items-center text-gray-500 mb-6">
@@ -306,7 +307,7 @@ export default async function PostDetail({
 
               <div
                 className="prose prose-lg max-w-none prose-headings:text-gray-800 prose-p:text-gray-700 prose-a:text-[var(--kids-blue)] prose-a:font-bold prose-img:rounded-2xl"
-                dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.rendered) }}
               />
 
               {/* ปุ่มแชร์ด้านล่างบทความ */}

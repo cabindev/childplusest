@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams, useRouter } from 'next/navigation';
+import DOMPurify from 'isomorphic-dompurify';
 import SkeletonLoader from './skeleton-loader';
 import { event } from '../../lib/google-analytics';
 
@@ -277,12 +278,12 @@ export default function ContentPageClient() {
                   
                   <div className="p-5">
                     <h2 className="text-lg font-bold mb-2 line-clamp-2 hover:text-kids-purple transition-colors">
-                      <span dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+                      <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.title.rendered) }} />
                     </h2>
-                    
-                    <div 
+
+                    <div
                       className="text-gray-600 mb-4 text-sm line-clamp-3"
-                      dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
+                      dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.excerpt.rendered) }}
                     />
                     
                     <div className="flex justify-between items-center">

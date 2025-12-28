@@ -10,11 +10,19 @@ export async function GET(
   try {
     const resolvedParams = await params;
     const postId = resolvedParams.id;
-    
+
+    // Validate postId is numeric
+    if (!postId || !/^\d+$/.test(postId)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid post ID (must be numeric)' },
+        { status: 400 }
+      );
+    }
+
     const postView = await prisma.postView.findUnique({
       where: { postId },
     });
-    
+
     return NextResponse.json({
       success: true,
       count: postView?.viewCount || 0,
@@ -36,14 +44,22 @@ export async function POST(
   try {
     const resolvedParams = await params;
     const postId = resolvedParams.id;
-    
+
+    // Validate postId is numeric
+    if (!postId || !/^\d+$/.test(postId)) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid post ID (must be numeric)' },
+        { status: 400 }
+      );
+    }
+
     // ใช้ upsert เพื่อสร้างหรืออัปเดตยอดวิว
     const postView = await prisma.postView.upsert({
       where: { postId },
       update: { viewCount: { increment: 1 } },
       create: { postId, viewCount: 1 },
     });
-    
+
     return NextResponse.json({
       success: true,
       count: postView.viewCount,
