@@ -82,13 +82,13 @@ const KidsNavbar = () => {
   };
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 bg-gray-100 shadow-md rounded-b-3xl px-4 py-2 transition-transform duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 bg-white shadow-md rounded-b-3xl px-4 py-2 transition-transform duration-300 ${
       isVisible ? 'translate-y-0' : '-translate-y-full'
     }`}>
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         {/* โลโก้ */}
         <Link href="/" onClick={handleLogoClick} className="flex items-center space-x-2 group">
-          <div className="relative w-16 h-16 overflow-hidden rounded-full grayscale">
+          <div className="relative w-16 h-16 overflow-hidden rounded-full">
             <Image
               src="/img/Childplus.png"
               alt="ChildPlusEst Logo"
@@ -99,13 +99,13 @@ const KidsNavbar = () => {
           </div>
 
           <div className="relative">
-            <h1 className="text-3xl font-bold text-gray-700">
+            <h1 className="text-3xl font-bold text-blue-600">
               ChildPlusest
             </h1>
-            <div className="absolute -bottom-1 left-0 h-1 bg-gray-400 w-0 group-hover:w-full transition-all duration-300"></div>
+            <div className="absolute -bottom-1 left-0 h-1 bg-yellow-400 w-0 group-hover:w-full transition-all duration-300"></div>
           </div>
 
-          <Sun className="h-8 w-8 text-gray-400 animate-spin-slow group-hover:animate-wiggle" />
+          <Sun className="h-8 w-8 text-yellow-400 animate-spin-slow group-hover:animate-wiggle" />
         </Link>
 
         {/* เมนูบนเดสก์ท็อป */}
@@ -114,7 +114,7 @@ const KidsNavbar = () => {
             href="/"
             icon={<Home className="h-5 w-5" />}
             label="Home"
-            color="bg-gray-300"
+            color="bg-blue-100 text-blue-700"
             onAnalyticsClick={() => handleNavClick("/", "Home")}
             isActive={pathname === "/"}
           />
@@ -122,7 +122,7 @@ const KidsNavbar = () => {
             href="/news"
             icon={<Newspaper className="h-5 w-5" />}
             label="News"
-            color="bg-gray-300"
+            color="bg-green-100 text-green-700"
             onAnalyticsClick={() => handleNavClick("/news", "News")}
             isActive={pathname.startsWith("/news")}
           />
@@ -130,7 +130,7 @@ const KidsNavbar = () => {
             href="/stories"
             icon={<Book className="h-5 w-5" />}
             label="Stories"
-            color="bg-gray-300"
+            color="bg-purple-100 text-purple-700"
             onAnalyticsClick={() => handleNavClick("/stories", "Stories")}
             isActive={pathname.startsWith("/stories")}
           />
@@ -138,7 +138,7 @@ const KidsNavbar = () => {
             href="/songs"
             icon={<Music className="h-5 w-5" />}
             label="Songs"
-            color="bg-gray-300"
+            color="bg-yellow-100 text-yellow-700"
             onAnalyticsClick={() => handleNavClick("/songs", "Songs")}
             isActive={pathname.startsWith("/songs")}
           />
@@ -147,21 +147,21 @@ const KidsNavbar = () => {
           <div className="relative" ref={aboutDropdownRef}>
             <button
               onClick={handleAboutDropdown}
-              className="bg-gray-400 text-gray-700 flex items-center space-x-1 px-3 py-2 rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
+              className="bg-orange-100 text-orange-700 flex items-center space-x-1 px-3 py-2 rounded-2xl font-light text-sm transition-all duration-300 hover:scale-105 hover:shadow-lg relative overflow-hidden group"
             >
-              <span className="absolute inset-0 bg-gray-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></span>
+              <span className="absolute inset-0 bg-orange-200 opacity-0 group-hover:opacity-50 transition-opacity duration-300"></span>
               <Info className="h-5 w-5 z-10" />
               <span className="z-10">About</span>
               <ChevronDown className={`h-4 w-4 transition-transform duration-300 z-10 ${isAboutOpen ? 'rotate-180' : ''}`} />
             </button>
-            
+
             {/* Dropdown menu */}
             {isAboutOpen && (
-              <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg py-1 bg-gray-50 ring-1 ring-gray-300 ring-opacity-30 z-20 animate-fadeIn">
+              <div className="absolute left-0 mt-2 w-48 rounded-xl shadow-lg py-1 bg-white ring-1 ring-orange-200 z-20 animate-fadeIn">
                 <Link
                   href="/about/vision"
                   onClick={() => handleNavClick("/about/vision", "Vision")}
-                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-gray-200"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-orange-700 hover:bg-orange-50"
                 >
                   <Smile className="h-5 w-5" />
                   <span>Vision</span>
@@ -169,7 +169,7 @@ const KidsNavbar = () => {
                 <Link
                   href="/about/team"
                   onClick={() => handleNavClick("/about/team", "Team")}
-                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-gray-200"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-orange-700 hover:bg-orange-50"
                 >
                   <Users className="h-5 w-5" />
                   <span>Team</span>
@@ -177,7 +177,7 @@ const KidsNavbar = () => {
                 <Link
                   href="/about/terms"
                   onClick={() => handleNavClick("/about/terms", "Terms")}
-                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-gray-200"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-orange-700 hover:bg-orange-50"
                 >
                   <Heart className="h-5 w-5" />
                   <span>Terms</span>
@@ -185,7 +185,7 @@ const KidsNavbar = () => {
                 <Link
                   href="/about/contact"
                   onClick={() => handleNavClick("/about/contact", "Contact")}
-                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-gray-700 hover:bg-gray-200"
+                  className="flex items-center space-x-2 px-4 py-2 text-sm font-light text-orange-700 hover:bg-orange-50"
                 >
                   <PhoneCall className="h-5 w-5" />
                   <span>Contact</span>
@@ -199,11 +199,11 @@ const KidsNavbar = () => {
         <div className="md:hidden">
           <button
             onClick={handleMobileMenuToggle}
-            className="p-2 rounded-full bg-gray-400 hover:bg-gray-500 transition-colors relative overflow-hidden group"
+            className="p-2 rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 transition-colors relative overflow-hidden group"
             aria-label={isOpen ? "ปิดเมนู" : "เปิดเมนู"}
           >
             <span className="sr-only">{isOpen ? "ปิดเมนู" : "เปิดเมนู"}</span>
-            <span className="absolute inset-0 bg-gray-300 scale-0 rounded-full group-hover:scale-100 transition-transform duration-300"></span>
+            <span className="absolute inset-0 bg-blue-200 scale-0 rounded-full group-hover:scale-100 transition-transform duration-300"></span>
             <svg
               className="h-6 w-6 relative z-10"
               xmlns="http://www.w3.org/2000/svg"
@@ -230,7 +230,7 @@ const KidsNavbar = () => {
               href="/"
               icon={<Home className="h-4 w-4" />}
               label="Home"
-              color="bg-gray-300"
+              color="bg-blue-100 text-blue-700"
               mobile
               onAnalyticsClick={() => handleNavClick("/", "Home_Mobile")}
             />
@@ -238,7 +238,7 @@ const KidsNavbar = () => {
               href="/news"
               icon={<Newspaper className="h-4 w-4" />}
               label="News"
-              color="bg-gray-300"
+              color="bg-green-100 text-green-700"
               mobile
               onAnalyticsClick={() => handleNavClick("/news", "News_Mobile")}
             />
@@ -246,7 +246,7 @@ const KidsNavbar = () => {
               href="/stories"
               icon={<Book className="h-4 w-4" />}
               label="Stories"
-              color="bg-gray-300"
+              color="bg-purple-100 text-purple-700"
               mobile
               onAnalyticsClick={() => handleNavClick("/stories", "Stories_Mobile")}
             />
@@ -254,15 +254,15 @@ const KidsNavbar = () => {
               href="/songs"
               icon={<Music className="h-4 w-4" />}
               label="Songs"
-              color="bg-gray-300"
+              color="bg-yellow-100 text-yellow-700"
               mobile
               onAnalyticsClick={() => handleNavClick("/songs", "Songs_Mobile")}
             />
           </div>
 
           {/* เมนูเกี่ยวกับเราบนมือถือ */}
-          <div className="bg-gray-200 p-2 rounded-xl">
-            <div className="flex items-center justify-center space-x-1 mb-2 text-gray-600 font-light text-xs">
+          <div className="bg-orange-50 p-2 rounded-xl">
+            <div className="flex items-center justify-center space-x-1 mb-2 text-orange-600 font-light text-xs">
               <Info className="h-4 w-4" />
               <h3>About</h3>
             </div>
@@ -271,7 +271,7 @@ const KidsNavbar = () => {
                 href="/about/vision"
                 icon={<Smile className="h-3 w-3" />}
                 label="Vision"
-                color="bg-gray-300"
+                color="bg-orange-100 text-orange-700"
                 mobile
                 onAnalyticsClick={() => handleNavClick("/about/vision", "Vision_Mobile")}
               />
@@ -279,7 +279,7 @@ const KidsNavbar = () => {
                 href="/about/team"
                 icon={<Users className="h-3 w-3" />}
                 label="Team"
-                color="bg-gray-300"
+                color="bg-orange-100 text-orange-700"
                 mobile
                 onAnalyticsClick={() => handleNavClick("/about/team", "Team_Mobile")}
               />
@@ -287,7 +287,7 @@ const KidsNavbar = () => {
                 href="/about/terms"
                 icon={<Heart className="h-3 w-3" />}
                 label="Terms"
-                color="bg-gray-300"
+                color="bg-orange-100 text-orange-700"
                 mobile
                 onAnalyticsClick={() => handleNavClick("/about/terms", "Terms_Mobile")}
               />
@@ -295,7 +295,7 @@ const KidsNavbar = () => {
                 href="/about/contact"
                 icon={<PhoneCall className="h-3 w-3" />}
                 label="Contact"
-                color="bg-gray-300"
+                color="bg-orange-100 text-orange-700"
                 mobile
                 onAnalyticsClick={() => handleNavClick("/about/contact", "Contact_Mobile")}
               />
