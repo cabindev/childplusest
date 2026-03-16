@@ -10,30 +10,12 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* ส่วนซ้าย: ข้อความและปุ่ม */}
           <div className="text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              <span className="block text-[#f8b195]">Learn, Play</span>
-              <span className="block text-[#a3daff]">and Grow</span>
-              <span className="block text-[#c3b4f7]">Together!</span>
+            <h1 className="text-3xl md:text-5xl font-bold mb-3 leading-tight text-gray-800">
+              มุ่งพัฒนาเด็กปฐมวัย
             </h1>
-            
-            <p className="text-xl mb-8 max-w-md mx-auto md:mx-0 text-gray-700">
-              โลกที่สนุกและเต็มไปด้วยสีสันสำหรับเด็กๆ ที่จะได้เรียนรู้ผ่านเกม นิทาน และกิจกรรมแบบโต้ตอบ
+            <p className="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 max-w-md mx-auto md:mx-0">
+              ให้มีสุขภาวะที่ดี มีทักษะชีวิตและจิตสำนึกในการสร้าง<strong className="text-[#4a90a4]">ภูมิคุ้มกันจากปัจจัยเสี่ยง</strong>
             </p>
-            
-            {/* <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-              <Link 
-                href="/games" 
-                className="bg-[#e7eeff] text-gray-700 px-6 py-3 rounded-full font-medium hover:shadow-md transition-shadow"
-              >
-                Start Learning
-              </Link>
-              <Link 
-                href="/parents" 
-                className="bg-white text-gray-700 px-6 py-3 rounded-full font-medium hover:shadow-md transition-shadow"
-              >
-                Parent Guide
-              </Link>
-            </div> */}
           </div>
           
           {/* ส่วนขวา: รูปภาพ */}
